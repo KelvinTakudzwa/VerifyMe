@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .actions {
+            margin-bottom: 20px;
+        }
+        .actions a {
+            margin-right: 10px;
+            text-decoration: none;
+            padding: 8px 12px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 4px;
+        }
+        .actions a:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employee List</h1>
+    <div class="actions">
+        <a href="{% url 'employee_search' %}">Search Employees</a>
+        <a href="{% url 'bulk_update_employees' %}">Bulk Update Employees</a>
+    </div>
+    {% if employees %}
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Employer</th>
+                <th>Position</th>
+                <th>Department</th>
+                <th>Year Started</th>
+                <th>Year Left</th>
+                <th>Actions</th>
+            </tr>
+            {% for employee in employees %}
+            <tr>
+                <td>{{ employee.user.username }}</td>
+                <td>{{ employee.employer }}</td>
+                <td>{{ employee.position }}</td>
+                <td>{{ employee.department }}</td>
+                <td>{{ employee.year_started }}</td>
+                <td>{{ employee.year_left }}</td>
+                <td>
+                    <a href="{% url 'update_employee' employee.pk %}">Update</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No employees found.</p>
+    {% endif %}
+</body>
+</html>

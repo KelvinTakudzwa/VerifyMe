@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Employee Information</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include any additional CSS or scripts you may need -->
+</head>
+<body>
+<div class="container mt-4">
+    <h1>Update Employee Information</h1>
+
+    <!-- Display success and error messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username">Username</label>
+            {{ form.username }}
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            {{ form.email }}
+        </div>
+        <div class="form-group">
+            <label for="department">Department</label>
+            {{ form.department }}
+        </div>
+        <div class="form-group">
+            <label for="position">Position</label>
+            {{ form.position }}
+        </div>
+        <div class="form-group">
+            <label for="employer">Employer</label>
+            {{ form.employer }}
+        </div>
+        <div class="form-group">
+            <label for="year_started">Year Started</label>
+            {{ form.year_started }}
+        </div>
+        <div class="form-group">
+            <label for="year_left">Year Left</label>
+            {{ form.year_left }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+</body>
+</html>
