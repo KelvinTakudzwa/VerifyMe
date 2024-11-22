@@ -1,0 +1,23 @@
+<!-- add_employee.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Employee Now</title>
+</head>
+<body>
+    <h1>Add Employee Now</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Employee</button>
+    </form>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

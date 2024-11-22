@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Search Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include any additional CSS or scripts you may need -->
+</head>
+<body>
+<div class="container mt-4">
+    <h1>Employee Search Results</h1>
+    <a href="{% url 'employee_search' %}" class="btn btn-secondary mb-3">Back to Search</a>
+    <table class="table table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th>Name</th>
+                <th>Employer</th>
+                <th>Position</th>
+                <th>Department</th>
+                <th>Year Started</th>
+                <th>Year Left</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            <tr>
+                <td>{{ employee.user.username }}</td>
+                <td>{{ employee.employer }}</td>
+                <td>{{ employee.position }}</td>
+                <td>{{ employee.department }}</td>
+                <td>{{ employee.year_started }}</td>
+                <td>{{ employee.year_left }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="text-center">No employees found matching your criteria.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

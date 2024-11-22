@@ -1,0 +1,26 @@
+<!-- bulk_update_employees.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bulk Update Employees</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include any additional CSS or scripts you may need -->
+</head>
+<body>
+<div class="container mt-4">
+    <h1>Bulk Update Employees</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="employee_data">Employee Data (CSV, text)</label>
+            <textarea class="form-control" name="employee_data" rows="10" cols="50"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+</body>
+</html>
